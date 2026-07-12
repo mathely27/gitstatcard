@@ -1,0 +1,16 @@
+# Local environment variables (contains secrets)
+backend/.env
+.env
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+env/
+venv/
+
+# OS files
+.DS_Store

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitStat</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <div class="parent">
         <div class="hero">
@@ -15,25 +17,127 @@
                     <input type="text" placeholder="Enter Your Github Username">
                     <br><br><br>
                     <br><br>
-                    
+
                     <button type="button">Generate</button>
                 </div>
-                
+
             </form>
-        </div>    
+        </div>
         <div class="preview">
             <div>Preview Your Card</div>
 
             <button type="button">Copy Link</button>
             <button type="button">Copy Preview</button>
-
-        <!-- </div> -->
-
         </div>
         <footer>
             <div class="about">
-                ABOUT SECTION!
-            </div>
+                Created By <a href=" https://github.com/mathely27">@mathely27</a> and <a
+                    href="https://github.com/roshandhiman">@roshandhiman</a> </div>
         </footer>
+    </div>
+
+    <script>
+        const BACKEND_URL = window.location.hostname === 'localhost' && window.location.port === '8000'
+            ? ''
+            : 'http://localhost:8000';
+
+        const input = document.querySelector('.form input');
+        const generateBtn = document.querySelector('.form button');
+        const copyLinkBtn = document.querySelectorAll('.preview button')[0];
+        const copyPreviewBtn = document.querySelectorAll('.preview button')[1];
+        const previewDiv = document.querySelector('.preview');
+
+        let currentUsername = '';
+        let cardImg = null;
+
+        generateBtn.addEventListener('click', async () => {
+            const username = input.value.trim();
+            if (!username) {
+                alert('Please enter a GitHub username');
+                return;
+            }
+
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+
+            try {
+                const cardUrl = `${BACKEND_URL}/api/card/${encodeURIComponent(username)}`;
+                const response = await fetch(cardUrl);
+
+                if (!response.ok) {
+                    let errMsg = 'Failed to generate card';
+                    try {
+                        const errJson = await response.json();
+                        errMsg = errJson.detail || errMsg;
+                    } catch (e) { }
+                    throw new Error(errMsg);
+                }
+
+                const blob = await response.blob();
+                const objectURL = URL.createObjectURL(blob);
+
+                if (!cardImg) {
+                    cardImg = document.createElement('img');
+                    cardImg.style.maxWidth = '90%';
+                    cardImg.style.maxHeight = '200px';
+                    cardImg.style.borderRadius = '10px';
+                    cardImg.style.marginTop = '10px';
+                    cardImg.style.marginBottom = '10px';
+                    previewDiv.insertBefore(cardImg, copyLinkBtn);
+                }
+
+                cardImg.src = objectURL;
+                currentUsername = username;
+            } catch (err) {
+                alert(err.message || 'Error communicating with backend.');
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'Generate';
+            }
+        });
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                return successful ? Promise.resolve() : Promise.reject(new Error('Copy failed'));
+            } catch (err) {
+                document.body.removeChild(textarea);
+                return Promise.reject(err);
+            }
+        }
+
+        copyLinkBtn.addEventListener('click', () => {
+            if (!currentUsername) {
+                alert('Please generate a card first');
+                return;
+            }
+            const linkUrl = `${BACKEND_URL}/api/card/${encodeURIComponent(currentUsername)}`;
+            copyToClipboard(linkUrl)
+                .then(() => alert('Direct URL copied!'))
+                .catch(() => alert('Failed to copy.'));
+        });
+
+        copyPreviewBtn.addEventListener('click', () => {
+            if (!currentUsername) {
+                alert('Please generate a card first');
+                return;
+            }
+            const linkUrl = `${BACKEND_URL}/api/card/${encodeURIComponent(currentUsername)}`;
+            const markdown = `![GitHub Stats Card](${linkUrl})`;
+            copyToClipboard(markdown)
+                .then(() => alert('Markdown snippet copied!'))
+                .catch(() => alert('Failed to copy.'));
+        });
+    </script>
 </body>
+
 </html>

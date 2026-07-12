@@ -1,12 +1,30 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
+from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 from datetime import date, timedelta
 import os
 import base64
 import requests
 
+# Load environment variables from the .env file if python-dotenv is installed
+try:
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+except ImportError:
+    # Fallback if python-dotenv is not installed
+    pass
+
 app = FastAPI()
+
+# Configure CORS (Cross-Origin Resource Sharing) for local development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def github_headers():
@@ -16,7 +34,8 @@ def github_headers():
     }
 
     token = os.getenv("GITHUB_TOKEN")
-    if token:
+    # Avoid using standard dummy values or placeholder values that fail authentication
+    if token and token.strip() and not token.startswith("github_pat_antigravity") and token != "your_github_token_here":
         headers["Authorization"] = f"Bearer {token}"
 
     return headers
@@ -51,7 +70,8 @@ def get_total_stars(username: str):
 def get_contribution_stats(username: str):
     token = os.getenv("GITHUB_TOKEN")
 
-    if not token:
+    # GraphQL API requires a valid token; skip and return empty stats if none is set or if it's a dummy/placeholder token
+    if not token or not token.strip() or token.startswith("github_pat_antigravity") or token == "your_github_token_here":
         return {
             "commits": 0,
             "current_streak": 0,
@@ -92,7 +112,9 @@ def get_contribution_stats(username: str):
         timeout=15
     )
 
+    print("DEBUG: GraphQL Request status code:", response.status_code)
     if response.status_code != 200:
+        print("DEBUG: GraphQL Request raw error response:", response.text)
         return {
             "commits": 0,
             "current_streak": 0,
@@ -100,6 +122,10 @@ def get_contribution_stats(username: str):
         }
 
     result = response.json()
+    if result.get("errors"):
+        print("DEBUG: GraphQL query errors:", result.get("errors"))
+    if not result.get("data", {}).get("user"):
+        print("DEBUG: GraphQL user data is empty:", result.get("data"))
 
     if result.get("errors") or not result.get("data", {}).get("user"):
         return {
