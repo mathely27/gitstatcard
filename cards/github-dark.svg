@@ -27,6 +27,15 @@
                 <animate attributeName="stop-color" values="#39d353;#f778ba;#39d353" dur="6s" repeatCount="indefinite" />
             </stop>
         </linearGradient>
+
+        <clipPath id="headerClip">
+            <rect x="1" y="1" width="598" height="83" rx="16" />
+        </clipPath>
+
+        <linearGradient id="headerFade" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0d1117" stop-opacity="0" />
+            <stop offset="100%" stop-color="#0d1117" stop-opacity="0.9" />
+        </linearGradient>
     </defs>
 
     <!-- ======================== -->
@@ -44,6 +53,213 @@
         stroke-width="1.4"
     />
 
+
+    <!-- ======================== -->
+    <!-- HEADER BACKGROUND EFFECT (matrix rain) -->
+    <!-- ======================== -->
+
+    <g clip-path="url(#headerClip)">
+<!-- 33 columns -->
+      <g opacity="0.24">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="8" dy="0">ア</tspan><tspan x="8" dy="13">イ</tspan><tspan x="8" dy="13">コ</tspan><tspan x="8" dy="13">1</tspan><tspan x="8" dy="13">ソ</tspan><tspan x="8" dy="13">オ</tspan><tspan x="8" dy="13">1</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.44s" begin="0.3s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.18">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="26" dy="0">シ</tspan><tspan x="26" dy="13">1</tspan><tspan x="26" dy="13">イ</tspan><tspan x="26" dy="13">カ</tspan><tspan x="26" dy="13">1</tspan><tspan x="26" dy="13">サ</tspan><tspan x="26" dy="13">1</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.82s" begin="0.84s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.28">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="44" dy="0">ク</tspan><tspan x="44" dy="13">シ</tspan><tspan x="44" dy="13">ウ</tspan><tspan x="44" dy="13">イ</tspan><tspan x="44" dy="13">ク</tspan><tspan x="44" dy="13">エ</tspan><tspan x="44" dy="13">イ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="5.14s" begin="0.09s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.2">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="62" dy="0">ア</tspan><tspan x="62" dy="13">1</tspan><tspan x="62" dy="13">オ</tspan><tspan x="62" dy="13">セ</tspan><tspan x="62" dy="13">シ</tspan><tspan x="62" dy="13">ケ</tspan><tspan x="62" dy="13">ス</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.11s" begin="1.28s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.19">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="80" dy="0">エ</tspan><tspan x="80" dy="13">カ</tspan><tspan x="80" dy="13">ア</tspan><tspan x="80" dy="13">ク</tspan><tspan x="80" dy="13">ソ</tspan><tspan x="80" dy="13">セ</tspan><tspan x="80" dy="13">ケ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.12s" begin="0.91s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.3">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="98" dy="0">イ</tspan><tspan x="98" dy="13">ソ</tspan><tspan x="98" dy="13">シ</tspan><tspan x="98" dy="13">エ</tspan><tspan x="98" dy="13">ケ</tspan><tspan x="98" dy="13">ウ</tspan><tspan x="98" dy="13">セ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.5s" begin="0.58s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.15">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="116" dy="0">ケ</tspan><tspan x="116" dy="13">ケ</tspan><tspan x="116" dy="13">コ</tspan><tspan x="116" dy="13">セ</tspan><tspan x="116" dy="13">ス</tspan><tspan x="116" dy="13">ア</tspan><tspan x="116" dy="13">ア</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.7s" begin="1.92s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.25">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="134" dy="0">1</tspan><tspan x="134" dy="13">ク</tspan><tspan x="134" dy="13">ス</tspan><tspan x="134" dy="13">ク</tspan><tspan x="134" dy="13">サ</tspan><tspan x="134" dy="13">コ</tspan><tspan x="134" dy="13">0</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="5.06s" begin="0.95s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.24">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="152" dy="0">セ</tspan><tspan x="152" dy="13">1</tspan><tspan x="152" dy="13">オ</tspan><tspan x="152" dy="13">ク</tspan><tspan x="152" dy="13">ウ</tspan><tspan x="152" dy="13">カ</tspan><tspan x="152" dy="13">サ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="5.05s" begin="0.71s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.15">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="170" dy="0">ス</tspan><tspan x="170" dy="13">サ</tspan><tspan x="170" dy="13">キ</tspan><tspan x="170" dy="13">ウ</tspan><tspan x="170" dy="13">シ</tspan><tspan x="170" dy="13">キ</tspan><tspan x="170" dy="13">シ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.62s" begin="1.74s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.2">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="188" dy="0">カ</tspan><tspan x="188" dy="13">ウ</tspan><tspan x="188" dy="13">ア</tspan><tspan x="188" dy="13">エ</tspan><tspan x="188" dy="13">ウ</tspan><tspan x="188" dy="13">カ</tspan><tspan x="188" dy="13">カ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="5.16s" begin="1.37s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.17">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="206" dy="0">ク</tspan><tspan x="206" dy="13">0</tspan><tspan x="206" dy="13">ウ</tspan><tspan x="206" dy="13">シ</tspan><tspan x="206" dy="13">コ</tspan><tspan x="206" dy="13">ケ</tspan><tspan x="206" dy="13">ウ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.63s" begin="1.66s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.24">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="224" dy="0">1</tspan><tspan x="224" dy="13">ス</tspan><tspan x="224" dy="13">サ</tspan><tspan x="224" dy="13">サ</tspan><tspan x="224" dy="13">サ</tspan><tspan x="224" dy="13">サ</tspan><tspan x="224" dy="13">イ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.4s" begin="1.03s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.17">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="242" dy="0">オ</tspan><tspan x="242" dy="13">ス</tspan><tspan x="242" dy="13">エ</tspan><tspan x="242" dy="13">イ</tspan><tspan x="242" dy="13">ケ</tspan><tspan x="242" dy="13">1</tspan><tspan x="242" dy="13">イ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.85s" begin="0.8s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.16">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="260" dy="0">コ</tspan><tspan x="260" dy="13">0</tspan><tspan x="260" dy="13">ア</tspan><tspan x="260" dy="13">オ</tspan><tspan x="260" dy="13">サ</tspan><tspan x="260" dy="13">ウ</tspan><tspan x="260" dy="13">キ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.6s" begin="0.3s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.22">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="278" dy="0">イ</tspan><tspan x="278" dy="13">セ</tspan><tspan x="278" dy="13">ス</tspan><tspan x="278" dy="13">セ</tspan><tspan x="278" dy="13">セ</tspan><tspan x="278" dy="13">ク</tspan><tspan x="278" dy="13">ア</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="5.08s" begin="1.2s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.26">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="296" dy="0">セ</tspan><tspan x="296" dy="13">エ</tspan><tspan x="296" dy="13">ソ</tspan><tspan x="296" dy="13">0</tspan><tspan x="296" dy="13">オ</tspan><tspan x="296" dy="13">ソ</tspan><tspan x="296" dy="13">コ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.97s" begin="1.5s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.14">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="314" dy="0">ソ</tspan><tspan x="314" dy="13">ク</tspan><tspan x="314" dy="13">ア</tspan><tspan x="314" dy="13">キ</tspan><tspan x="314" dy="13">ソ</tspan><tspan x="314" dy="13">コ</tspan><tspan x="314" dy="13">エ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.98s" begin="1.09s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.23">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="332" dy="0">ソ</tspan><tspan x="332" dy="13">ケ</tspan><tspan x="332" dy="13">カ</tspan><tspan x="332" dy="13">オ</tspan><tspan x="332" dy="13">カ</tspan><tspan x="332" dy="13">サ</tspan><tspan x="332" dy="13">カ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.52s" begin="0.45s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.26">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="350" dy="0">0</tspan><tspan x="350" dy="13">キ</tspan><tspan x="350" dy="13">セ</tspan><tspan x="350" dy="13">キ</tspan><tspan x="350" dy="13">オ</tspan><tspan x="350" dy="13">コ</tspan><tspan x="350" dy="13">ス</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.12s" begin="0.99s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.2">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="368" dy="0">コ</tspan><tspan x="368" dy="13">ア</tspan><tspan x="368" dy="13">カ</tspan><tspan x="368" dy="13">イ</tspan><tspan x="368" dy="13">カ</tspan><tspan x="368" dy="13">セ</tspan><tspan x="368" dy="13">オ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.7s" begin="1.45s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.3">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="386" dy="0">0</tspan><tspan x="386" dy="13">セ</tspan><tspan x="386" dy="13">コ</tspan><tspan x="386" dy="13">ア</tspan><tspan x="386" dy="13">イ</tspan><tspan x="386" dy="13">サ</tspan><tspan x="386" dy="13">オ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.48s" begin="0.97s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.27">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="404" dy="0">ケ</tspan><tspan x="404" dy="13">ア</tspan><tspan x="404" dy="13">サ</tspan><tspan x="404" dy="13">ス</tspan><tspan x="404" dy="13">サ</tspan><tspan x="404" dy="13">ア</tspan><tspan x="404" dy="13">エ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.84s" begin="0.36s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.16">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="422" dy="0">ス</tspan><tspan x="422" dy="13">ウ</tspan><tspan x="422" dy="13">セ</tspan><tspan x="422" dy="13">コ</tspan><tspan x="422" dy="13">ウ</tspan><tspan x="422" dy="13">ウ</tspan><tspan x="422" dy="13">0</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.04s" begin="0.25s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.24">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="440" dy="0">ソ</tspan><tspan x="440" dy="13">ウ</tspan><tspan x="440" dy="13">シ</tspan><tspan x="440" dy="13">オ</tspan><tspan x="440" dy="13">オ</tspan><tspan x="440" dy="13">0</tspan><tspan x="440" dy="13">キ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.64s" begin="1.94s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.26">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="458" dy="0">ケ</tspan><tspan x="458" dy="13">キ</tspan><tspan x="458" dy="13">シ</tspan><tspan x="458" dy="13">ウ</tspan><tspan x="458" dy="13">1</tspan><tspan x="458" dy="13">コ</tspan><tspan x="458" dy="13">ス</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.15s" begin="1.0s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.22">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="476" dy="0">ソ</tspan><tspan x="476" dy="13">ウ</tspan><tspan x="476" dy="13">ウ</tspan><tspan x="476" dy="13">ソ</tspan><tspan x="476" dy="13">ソ</tspan><tspan x="476" dy="13">0</tspan><tspan x="476" dy="13">ス</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.32s" begin="1.63s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.26">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="494" dy="0">ウ</tspan><tspan x="494" dy="13">エ</tspan><tspan x="494" dy="13">ウ</tspan><tspan x="494" dy="13">セ</tspan><tspan x="494" dy="13">イ</tspan><tspan x="494" dy="13">1</tspan><tspan x="494" dy="13">ケ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.62s" begin="1.22s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.22">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="512" dy="0">イ</tspan><tspan x="512" dy="13">1</tspan><tspan x="512" dy="13">カ</tspan><tspan x="512" dy="13">オ</tspan><tspan x="512" dy="13">キ</tspan><tspan x="512" dy="13">1</tspan><tspan x="512" dy="13">イ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="4.37s" begin="1.06s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.26">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="530" dy="0">ア</tspan><tspan x="530" dy="13">ス</tspan><tspan x="530" dy="13">ケ</tspan><tspan x="530" dy="13">ソ</tspan><tspan x="530" dy="13">ソ</tspan><tspan x="530" dy="13">オ</tspan><tspan x="530" dy="13">キ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.92s" begin="1.12s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.22">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="548" dy="0">カ</tspan><tspan x="548" dy="13">ソ</tspan><tspan x="548" dy="13">キ</tspan><tspan x="548" dy="13">オ</tspan><tspan x="548" dy="13">ス</tspan><tspan x="548" dy="13">ウ</tspan><tspan x="548" dy="13">シ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="3.78s" begin="1.07s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.15">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="566" dy="0">カ</tspan><tspan x="566" dy="13">シ</tspan><tspan x="566" dy="13">ア</tspan><tspan x="566" dy="13">オ</tspan><tspan x="566" dy="13">ク</tspan><tspan x="566" dy="13">イ</tspan><tspan x="566" dy="13">ウ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="2.92s" begin="0.88s" repeatCount="indefinite" />
+      </g>
+      <g opacity="0.2">
+        <text font-family="ui-monospace, 'Courier New', monospace" font-size="12" fill="#39d353">
+          <tspan x="584" dy="0">キ</tspan><tspan x="584" dy="13">ウ</tspan><tspan x="584" dy="13">ス</tspan><tspan x="584" dy="13">カ</tspan><tspan x="584" dy="13">イ</tspan><tspan x="584" dy="13">サ</tspan><tspan x="584" dy="13">セ</tspan>
+        </text>
+        <animateTransform attributeName="transform" type="translate" values="0,-90;0,90" dur="5.04s" begin="1.29s" repeatCount="indefinite" />
+      </g>
+      <rect x="1" y="1" width="598" height="83" fill="url(#headerFade)" opacity="0.35" />
+    </g>
 
     <!-- ======================== -->
     <!-- HEADER -->
