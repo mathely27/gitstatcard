@@ -29,7 +29,7 @@
         fill="#ffffff"
         font-size="20"
         font-weight="bold">
-        Roshanpreet Singh
+        {{NAME}}
     </text>
 
     <text
@@ -37,7 +37,7 @@
         y="65"
         fill="#39d353"
         font-size="13">
-        @roshandhiman
+        @{{USERNAME}}
     </text>
 
 
@@ -93,7 +93,7 @@
     </text>
 
     <text x="160" y="125" fill="#39d353" font-size="14" font-weight="bold">
-        24
+        {{TOTAL_REPOS}}
     </text>
 
 
@@ -102,7 +102,7 @@
     </text>
 
     <text x="160" y="160" fill="#39d353" font-size="14" font-weight="bold">
-        89
+        {{FOLLOWERS}}
     </text>
 
 
@@ -111,7 +111,7 @@
     </text>
 
     <text x="160" y="195" fill="#39d353" font-size="14" font-weight="bold">
-        567
+        {{COMMITS}}
     </text>
 
 
@@ -120,7 +120,7 @@
     </text>
 
     <text x="160" y="230" fill="#39d353" font-size="14" font-weight="bold">
-        120
+        {{STARS}}
     </text>
 
 
@@ -155,7 +155,7 @@
         font-size="18"
         font-weight="bold"
         text-anchor="middle">
-        12 days
+        {{CURRENT_STREAK}} days
     </text>
 
 
@@ -185,7 +185,7 @@
         font-size="18"
         font-weight="bold"
         text-anchor="middle">
-        47 days
+        {{MAX_STREAK}}days
     </text>
 
 
