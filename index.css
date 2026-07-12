@@ -1,0 +1,57 @@
+*{
+    padding:0px;
+    margin:0px;
+
+}
+.navbar{
+    width:100%;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background-color:aqua;
+    font-size: 20px;
+
+
+
+}
+.links{
+    display:flex;
+    gap:20px;
+    list-style:none;
+    align-items:center;
+    padding:20px;
+}
+.links ul {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    list-style: none;
+}
+a{
+    text-decoration:none;
+   
+}
+a:hover{
+     color:white;
+
+}
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:200px;
+    background-color: red;
+    flex-direction: column;
+    gap:20px;
+}
+.hero1{
+    font:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+
+
+}
