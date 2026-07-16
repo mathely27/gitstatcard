@@ -1,0 +1,681 @@
+<svg
+    width="600"
+    height="300"
+    viewBox="0 0 600 300"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <defs>
+        <!-- Clip paths -->
+        <clipPath id="cardClip">
+            <rect x="0" y="0" width="600" height="300" rx="20" />
+        </clipPath>
+        <clipPath id="profileClip">
+            <circle cx="555" cy="46" r="30" />
+        </clipPath>
+
+        <!-- Holographic gradient for the border -->
+        <linearGradient id="holoBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f0ff">
+                <animate attributeName="stop-color" values="#00f0ff;#a855f7;#f0abfc;#00f0ff" dur="4s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="33%" stop-color="#a855f7">
+                <animate attributeName="stop-color" values="#a855f7;#f0abfc;#00f0ff;#a855f7" dur="4s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="66%" stop-color="#f0abfc">
+                <animate attributeName="stop-color" values="#f0abfc;#00f0ff;#a855f7;#f0abfc" dur="4s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stop-color="#00f0ff">
+                <animate attributeName="stop-color" values="#00f0ff;#a855f7;#f0abfc;#00f0ff" dur="4s" repeatCount="indefinite" />
+            </stop>
+        </linearGradient>
+
+        <!-- Animated scanning line gradient -->
+        <linearGradient id="scanLine" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
+            <stop offset="45%" stop-color="#00f0ff" stop-opacity="0" />
+            <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.15" />
+            <stop offset="55%" stop-color="#00f0ff" stop-opacity="0" />
+            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0" />
+            <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" dur="3s" repeatCount="indefinite" />
+        </linearGradient>
+
+        <!-- Glass panel gradient -->
+        <linearGradient id="glassPanelBg" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+        </linearGradient>
+
+        <!-- Glow filter for neon text -->
+        <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2.5" result="blur" />
+            <feFlood flood-color="#00f0ff" flood-opacity="0.6" result="color" />
+            <feComposite in="color" in2="blur" operator="in" result="glowColor" />
+            <feMerge>
+                <feMergeNode in="glowColor" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- Purple glow -->
+        <filter id="purpleGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feFlood flood-color="#a855f7" flood-opacity="0.5" result="color" />
+            <feComposite in="color" in2="blur" operator="in" result="glowColor" />
+            <feMerge>
+                <feMergeNode in="glowColor" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- Soft ambient glow for profile -->
+        <filter id="avatarGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feFlood flood-color="#a855f7" flood-opacity="0.4" result="color" />
+            <feComposite in="color" in2="blur" operator="in" result="glowColor" />
+            <feMerge>
+                <feMergeNode in="glowColor" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- Circuit trace pattern -->
+        <pattern id="circuitPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="20" y2="30" stroke="#00f0ff" stroke-width="0.5" opacity="0.1" />
+            <line x1="20" y1="30" x2="20" y2="10" stroke="#00f0ff" stroke-width="0.5" opacity="0.1" />
+            <line x1="20" y1="10" x2="40" y2="10" stroke="#00f0ff" stroke-width="0.5" opacity="0.1" />
+            <line x1="40" y1="10" x2="40" y2="50" stroke="#00f0ff" stroke-width="0.5" opacity="0.1" />
+            <line x1="40" y1="50" x2="60" y2="50" stroke="#00f0ff" stroke-width="0.5" opacity="0.1" />
+            <circle cx="20" cy="30" r="1.5" fill="#00f0ff" opacity="0.15" />
+            <circle cx="20" cy="10" r="1.5" fill="#a855f7" opacity="0.15" />
+            <circle cx="40" cy="10" r="1.5" fill="#00f0ff" opacity="0.15" />
+            <circle cx="40" cy="50" r="1.5" fill="#a855f7" opacity="0.15" />
+        </pattern>
+
+        <!-- Hexagonal grid pattern -->
+        <pattern id="hexGrid" x="0" y="0" width="30" height="26" patternUnits="userSpaceOnUse">
+            <polygon points="15,0 30,7.5 30,22.5 15,26 0,22.5 0,7.5" fill="none" stroke="#a855f7" stroke-width="0.3" opacity="0.08" />
+        </pattern>
+    </defs>
+
+    <!-- ======================== -->
+    <!-- CARD BACKGROUND -->
+    <!-- ======================== -->
+
+    <g clip-path="url(#cardClip)">
+
+        <!-- Deep space background -->
+        <rect x="0" y="0" width="600" height="300" fill="#05060f" />
+
+        <!-- Subtle radial glow center -->
+        <circle cx="300" cy="150" r="250" fill="#0a0d2a" opacity="0.5" />
+        <circle cx="100" cy="80" r="180" fill="#0d0030" opacity="0.2" />
+        <circle cx="520" cy="240" r="150" fill="#001a30" opacity="0.25" />
+
+        <!-- Circuit board pattern overlay -->
+        <rect x="0" y="0" width="600" height="300" fill="url(#circuitPattern)" opacity="0.6" />
+
+        <!-- Hex grid overlay -->
+        <rect x="0" y="0" width="600" height="300" fill="url(#hexGrid)" opacity="0.5" />
+
+        <!-- Animated scan line -->
+        <rect x="0" y="0" width="600" height="300" fill="url(#scanLine)" />
+
+        <!-- ======================== -->
+        <!-- FLOATING PARTICLES -->
+        <!-- ======================== -->
+
+        <circle cx="50" cy="50" r="1" fill="#00f0ff" opacity="0.6">
+            <animate attributeName="cy" values="50;250;50" dur="8s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.6;0.1;0.6" dur="8s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="150" cy="200" r="0.8" fill="#a855f7" opacity="0.5">
+            <animate attributeName="cy" values="200;30;200" dur="6s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="450" cy="100" r="1.2" fill="#f0abfc" opacity="0.4">
+            <animate attributeName="cy" values="100;270;100" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.4;0.1;0.4" dur="10s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="520" cy="180" r="0.7" fill="#00f0ff" opacity="0.5">
+            <animate attributeName="cy" values="180;20;180" dur="7s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="300" cy="280" r="0.9" fill="#a855f7" opacity="0.3">
+            <animate attributeName="cy" values="280;60;280" dur="9s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="80" cy="150" r="0.6" fill="#00f0ff" opacity="0.4">
+            <animate attributeName="cx" values="80;520;80" dur="12s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="400" cy="30" r="1" fill="#f0abfc" opacity="0.35">
+            <animate attributeName="cx" values="400;100;400" dur="11s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="30;270;30" dur="11s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- ======================== -->
+        <!-- HEADER SECTION -->
+        <!-- ======================== -->
+
+        <!-- Header accent line (top) -->
+        <line x1="20" y1="1" x2="580" y2="1" stroke="url(#holoBorder)" stroke-width="2" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+        </line>
+
+        <!-- Name -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="0.15s" dur="0.6s" fill="freeze" />
+            <text
+                x="28"
+                y="42"
+                fill="#ffffff"
+                font-family="'SF Pro Display', 'Segoe UI', system-ui, -apple-system, sans-serif"
+                font-size="22"
+                font-weight="700"
+                letter-spacing="0.5">
+                {{NAME}}
+            </text>
+        </g>
+
+        <!-- Username with cyber glow -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.5s" fill="freeze" />
+            <text
+                x="28"
+                y="64"
+                fill="#00f0ff"
+                font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', monospace"
+                font-size="12"
+                letter-spacing="2"
+                filter="url(#neonGlow)">
+                @{{USERNAME}}
+            </text>
+        </g>
+
+        <!-- Status indicator dot -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze" />
+            <circle cx="28" cy="78" r="3" fill="#39d353">
+                <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <text
+                x="38"
+                y="82"
+                fill="#39d353"
+                font-family="'JetBrains Mono', 'Fira Code', monospace"
+                font-size="9"
+                letter-spacing="1.5"
+                opacity="0.7">
+                ONLINE
+            </text>
+        </g>
+
+        <!-- Profile Picture - Holographic Ring -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="0.2s" dur="0.7s" fill="freeze" />
+
+            <!-- Outer orbiting ring -->
+            <circle cx="555" cy="46" r="36" fill="none" stroke="url(#holoBorder)" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.4">
+                <animateTransform attributeName="transform" type="rotate" from="0 555 46" to="360 555 46" dur="10s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Inner glow ring -->
+            <circle cx="555" cy="46" r="32" fill="none" stroke="#a855f7" stroke-width="1.5" opacity="0.3" filter="url(#avatarGlow)">
+                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Profile image -->
+            <image
+                href="{{PROFILE_PICTURE}}"
+                xlink:href="{{PROFILE_PICTURE}}"
+                x="525"
+                y="16"
+                width="60"
+                height="60"
+                preserveAspectRatio="xMidYMid slice"
+                clip-path="url(#profileClip)"
+            />
+
+            <!-- Profile border -->
+            <circle cx="555" cy="46" r="30" fill="none" stroke="url(#holoBorder)" stroke-width="2" />
+
+            <!-- Corner accents on profile -->
+            <line x1="525" y1="16" x2="535" y2="16" stroke="#00f0ff" stroke-width="1" opacity="0.6" />
+            <line x1="525" y1="16" x2="525" y2="26" stroke="#00f0ff" stroke-width="1" opacity="0.6" />
+            <line x1="575" y1="76" x2="585" y2="76" stroke="#a855f7" stroke-width="1" opacity="0.6" />
+            <line x1="585" y1="66" x2="585" y2="76" stroke="#a855f7" stroke-width="1" opacity="0.6" />
+        </g>
+
+
+        <!-- ======================== -->
+        <!-- DIVIDER - Animated neon line -->
+        <!-- ======================== -->
+
+        <line x1="20" y1="92" x2="20" y2="92" stroke="url(#holoBorder)" stroke-width="1" opacity="0.5">
+            <animate attributeName="x2" from="20" to="580" begin="0.6s" dur="0.7s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1" />
+        </line>
+
+        <!-- Small accent squares on divider -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="0.6" begin="1.3s" dur="0.3s" fill="freeze" />
+            <rect x="18" y="90" width="4" height="4" fill="#00f0ff" rx="1">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+            </rect>
+            <rect x="578" y="90" width="4" height="4" fill="#a855f7" rx="1">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1s" repeatCount="indefinite" />
+            </rect>
+        </g>
+
+
+        <!-- ======================== -->
+        <!-- STATS SECTION (Left) -->
+        <!-- Glass Panel -->
+        <!-- ======================== -->
+
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.0s" dur="0.5s" fill="freeze" />
+
+            <!-- Glass panel background -->
+            <rect x="16" y="102" width="178" height="182" rx="12" fill="url(#glassPanelBg)" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.05" />
+
+            <!-- Panel header -->
+            <text
+                x="105"
+                y="122"
+                fill="#00f0ff"
+                font-family="'JetBrains Mono', monospace"
+                font-size="9"
+                font-weight="600"
+                letter-spacing="2"
+                text-anchor="middle"
+                filter="url(#neonGlow)"
+                opacity="0.9">
+                &#60; STATS /&#62;
+            </text>
+
+            <!-- Thin line under header -->
+            <line x1="30" y1="130" x2="180" y2="130" stroke="#00f0ff" stroke-width="0.5" opacity="0.2" />
+        </g>
+
+        <!-- Stat: Total Repos -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.3s" dur="0.4s" fill="freeze" />
+            <rect x="28" y="138" width="4" height="4" rx="1" fill="#00f0ff" opacity="0.8" />
+            <text x="40" y="148" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">
+                REPOSITORIES
+            </text>
+            <text x="178" y="148" fill="#00f0ff" font-family="'SF Pro Display', sans-serif" font-size="16" font-weight="700" text-anchor="end" filter="url(#neonGlow)">
+                {{TOTAL_REPOS}}
+            </text>
+        </g>
+
+        <!-- Stat: Followers -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.5s" dur="0.4s" fill="freeze" />
+            <rect x="28" y="162" width="4" height="4" rx="1" fill="#a855f7" opacity="0.8" />
+            <text x="40" y="172" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">
+                FOLLOWERS
+            </text>
+            <text x="178" y="172" fill="#a855f7" font-family="'SF Pro Display', sans-serif" font-size="16" font-weight="700" text-anchor="end" filter="url(#purpleGlow)">
+                {{FOLLOWERS}}
+            </text>
+        </g>
+
+        <!-- Stat: Commits -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.7s" dur="0.4s" fill="freeze" />
+            <rect x="28" y="186" width="4" height="4" rx="1" fill="#f0abfc" opacity="0.8" />
+            <text x="40" y="196" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">
+                COMMITS
+            </text>
+            <text x="178" y="196" fill="#f0abfc" font-family="'SF Pro Display', sans-serif" font-size="16" font-weight="700" text-anchor="end">
+                {{COMMITS}}
+            </text>
+        </g>
+
+        <!-- Stat: Stars -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.9s" dur="0.4s" fill="freeze" />
+            <rect x="28" y="210" width="4" height="4" rx="1" fill="#fbbf24" opacity="0.8" />
+            <text x="40" y="220" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">
+                STARS
+            </text>
+            <text x="178" y="220" fill="#fbbf24" font-family="'SF Pro Display', sans-serif" font-size="16" font-weight="700" text-anchor="end">
+                {{STARS}}
+            </text>
+        </g>
+
+        <!-- Mini activity bar chart -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="2.1s" dur="0.4s" fill="freeze" />
+            <rect x="30" y="260" width="8" height="16" rx="2" fill="#00f0ff" opacity="0.3">
+                <animate attributeName="height" values="16;22;16" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="y" values="260;254;260" dur="3s" repeatCount="indefinite" />
+            </rect>
+            <rect x="42" y="252" width="8" height="24" rx="2" fill="#a855f7" opacity="0.3">
+                <animate attributeName="height" values="24;14;24" dur="3.5s" repeatCount="indefinite" />
+                <animate attributeName="y" values="252;262;252" dur="3.5s" repeatCount="indefinite" />
+            </rect>
+            <rect x="54" y="256" width="8" height="20" rx="2" fill="#00f0ff" opacity="0.3">
+                <animate attributeName="height" values="20;28;20" dur="2.8s" repeatCount="indefinite" />
+                <animate attributeName="y" values="256;248;256" dur="2.8s" repeatCount="indefinite" />
+            </rect>
+            <rect x="66" y="264" width="8" height="12" rx="2" fill="#f0abfc" opacity="0.3">
+                <animate attributeName="height" values="12;20;12" dur="3.2s" repeatCount="indefinite" />
+                <animate attributeName="y" values="264;256;264" dur="3.2s" repeatCount="indefinite" />
+            </rect>
+            <rect x="78" y="250" width="8" height="26" rx="2" fill="#a855f7" opacity="0.3">
+                <animate attributeName="height" values="26;16;26" dur="2.5s" repeatCount="indefinite" />
+                <animate attributeName="y" values="250;260;250" dur="2.5s" repeatCount="indefinite" />
+            </rect>
+            <rect x="90" y="258" width="8" height="18" rx="2" fill="#00f0ff" opacity="0.3">
+                <animate attributeName="height" values="18;24;18" dur="3.8s" repeatCount="indefinite" />
+                <animate attributeName="y" values="258;252;258" dur="3.8s" repeatCount="indefinite" />
+            </rect>
+            <rect x="102" y="254" width="8" height="22" rx="2" fill="#f0abfc" opacity="0.3">
+                <animate attributeName="height" values="22;12;22" dur="2.6s" repeatCount="indefinite" />
+                <animate attributeName="y" values="254;264;254" dur="2.6s" repeatCount="indefinite" />
+            </rect>
+        </g>
+
+
+        <!-- ======================== -->
+        <!-- CENTER CONTAINER -->
+        <!-- Streak Stats - Holographic Ring -->
+        <!-- ======================== -->
+
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.5s" fill="freeze" />
+
+            <!-- Glass panel -->
+            <rect x="206" y="102" width="188" height="182" rx="12" fill="url(#glassPanelBg)" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.05" />
+
+            <!-- Panel header -->
+            <text
+                x="300"
+                y="122"
+                fill="#a855f7"
+                font-family="'JetBrains Mono', monospace"
+                font-size="9"
+                font-weight="600"
+                letter-spacing="2"
+                text-anchor="middle"
+                filter="url(#purpleGlow)"
+                opacity="0.9">
+                &#60; STREAK /&#62;
+            </text>
+
+            <line x1="220" y1="130" x2="380" y2="130" stroke="#a855f7" stroke-width="0.5" opacity="0.2" />
+        </g>
+
+        <!-- Current Streak - Circular display -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.6s" dur="0.5s" fill="freeze" />
+
+            <!-- Outer animated ring -->
+            <circle cx="262" cy="190" r="38" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="8 4" opacity="0.25">
+                <animateTransform attributeName="transform" type="rotate" from="0 262 190" to="360 262 190" dur="15s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Arc indicator -->
+            <circle cx="262" cy="190" r="32" fill="none" stroke="url(#holoBorder)" stroke-width="2.5" stroke-dasharray="130 72" stroke-linecap="round" opacity="0.7">
+                <animateTransform attributeName="transform" type="rotate" from="-90 262 190" to="270 262 190" dur="20s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Inner circle bg -->
+            <circle cx="262" cy="190" r="26" fill="#05060f" opacity="0.8" />
+
+            <!-- Streak number -->
+            <text
+                x="262"
+                y="186"
+                fill="#ffffff"
+                font-family="'SF Pro Display', sans-serif"
+                font-size="20"
+                font-weight="800"
+                text-anchor="middle">
+                {{CURRENT_STREAK}}
+            </text>
+            <text
+                x="262"
+                y="200"
+                fill="#00f0ff"
+                font-family="'JetBrains Mono', monospace"
+                font-size="7"
+                text-anchor="middle"
+                letter-spacing="1"
+                opacity="0.8">
+                DAYS
+            </text>
+
+            <!-- Label -->
+            <text
+                x="262"
+                y="245"
+                fill="#8b949e"
+                font-family="'JetBrains Mono', monospace"
+                font-size="8"
+                font-weight="600"
+                text-anchor="middle"
+                letter-spacing="1">
+                CURRENT
+            </text>
+
+            <!-- Pulse dot on ring -->
+            <circle cx="262" cy="152" r="3" fill="#00f0ff" opacity="0.8">
+                <animate attributeName="r" values="3;5;3" dur="1.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite" />
+            </circle>
+        </g>
+
+        <!-- Max Streak - Circular display -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.9s" dur="0.5s" fill="freeze" />
+
+            <!-- Outer animated ring -->
+            <circle cx="340" cy="190" r="38" fill="none" stroke="#a855f7" stroke-width="1" stroke-dasharray="6 6" opacity="0.2">
+                <animateTransform attributeName="transform" type="rotate" from="360 340 190" to="0 340 190" dur="12s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Arc indicator -->
+            <circle cx="340" cy="190" r="32" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-dasharray="160 42" stroke-linecap="round" opacity="0.5">
+                <animateTransform attributeName="transform" type="rotate" from="-90 340 190" to="270 340 190" dur="18s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Inner circle bg -->
+            <circle cx="340" cy="190" r="26" fill="#05060f" opacity="0.8" />
+
+            <!-- Max streak number -->
+            <text
+                x="340"
+                y="186"
+                fill="#ffffff"
+                font-family="'SF Pro Display', sans-serif"
+                font-size="20"
+                font-weight="800"
+                text-anchor="middle">
+                {{MAX_STREAK}}
+            </text>
+            <text
+                x="340"
+                y="200"
+                fill="#a855f7"
+                font-family="'JetBrains Mono', monospace"
+                font-size="7"
+                text-anchor="middle"
+                letter-spacing="1"
+                opacity="0.8">
+                DAYS
+            </text>
+
+            <!-- Label -->
+            <text
+                x="340"
+                y="245"
+                fill="#8b949e"
+                font-family="'JetBrains Mono', monospace"
+                font-size="8"
+                font-weight="600"
+                text-anchor="middle"
+                letter-spacing="1">
+                BEST
+            </text>
+
+            <!-- Pulse dot on ring -->
+            <circle cx="340" cy="152" r="3" fill="#a855f7" opacity="0.7">
+                <animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.7;0.3;0.7" dur="1.8s" repeatCount="indefinite" />
+            </circle>
+        </g>
+
+        <!-- Fire icon between circles -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="2.0s" dur="0.4s" fill="freeze" />
+            <text
+                x="300"
+                y="152"
+                fill="#f97316"
+                font-size="16"
+                text-anchor="middle">
+                🔥
+                <animate attributeName="opacity" values="1;0.5;1" dur="1.2s" repeatCount="indefinite" />
+            </text>
+        </g>
+
+
+        <!-- ======================== -->
+        <!-- RIGHT CONTAINER -->
+        <!-- Social / Connect -->
+        <!-- ======================== -->
+
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="1.4s" dur="0.5s" fill="freeze" />
+
+            <!-- Glass panel -->
+            <rect x="406" y="102" width="178" height="182" rx="12" fill="url(#glassPanelBg)" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.05" />
+
+            <!-- Panel header -->
+            <text
+                x="495"
+                y="122"
+                fill="#f0abfc"
+                font-family="'JetBrains Mono', monospace"
+                font-size="9"
+                font-weight="600"
+                letter-spacing="2"
+                text-anchor="middle"
+                opacity="0.9">
+                &#60; LINKS /&#62;
+            </text>
+
+            <line x1="420" y1="130" x2="570" y2="130" stroke="#f0abfc" stroke-width="0.5" opacity="0.2" />
+        </g>
+
+        <!-- Link: GitHub -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="2.2s" dur="0.35s" fill="freeze" />
+            <rect x="420" y="140" width="150" height="28" rx="6" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.08" />
+            <circle cx="436" cy="154" r="3" fill="#ffffff" opacity="0.7" />
+            <text x="448" y="158" fill="#ffffff" font-family="'SF Pro Display', sans-serif" font-size="12" font-weight="500">
+                GitHub
+            </text>
+            <text x="562" y="157" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end" opacity="0.5">→</text>
+        </g>
+
+        <!-- Link: LinkedIn -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="2.4s" dur="0.35s" fill="freeze" />
+            <rect x="420" y="174" width="150" height="28" rx="6" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.08" />
+            <circle cx="436" cy="188" r="3" fill="#0a66c2" opacity="0.8" />
+            <text x="448" y="192" fill="#58a6ff" font-family="'SF Pro Display', sans-serif" font-size="12" font-weight="500">
+                LinkedIn
+            </text>
+            <text x="562" y="191" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end" opacity="0.5">→</text>
+        </g>
+
+        <!-- Link: Instagram -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="2.6s" dur="0.35s" fill="freeze" />
+            <rect x="420" y="208" width="150" height="28" rx="6" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.08" />
+            <circle cx="436" cy="222" r="3" fill="#e1306c" opacity="0.8" />
+            <text x="448" y="226" fill="#f778ba" font-family="'SF Pro Display', sans-serif" font-size="12" font-weight="500">
+                Instagram
+            </text>
+            <text x="562" y="225" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end" opacity="0.5">→</text>
+        </g>
+
+        <!-- Link: Website -->
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" begin="2.8s" dur="0.35s" fill="freeze" />
+            <rect x="420" y="242" width="150" height="28" rx="6" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.08" />
+            <circle cx="436" cy="256" r="3" fill="#39d353" opacity="0.8" />
+            <text x="448" y="260" fill="#39d353" font-family="'SF Pro Display', sans-serif" font-size="12" font-weight="500">
+                Website
+            </text>
+            <text x="562" y="259" fill="#8b949e" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end" opacity="0.5">→</text>
+        </g>
+
+
+        <!-- ======================== -->
+        <!-- BOTTOM STATUS BAR -->
+        <!-- ======================== -->
+
+        <g opacity="0">
+            <animate attributeName="opacity" from="0" to="0.5" begin="3.0s" dur="0.4s" fill="freeze" />
+
+            <text
+                x="28"
+                y="294"
+                fill="#8b949e"
+                font-family="'JetBrains Mono', monospace"
+                font-size="7"
+                letter-spacing="1"
+                opacity="0.4">
+                GITSTATCARD • v2.0 FUTURISTIC
+            </text>
+
+            <!-- Animated status dots -->
+            <circle cx="550" cy="291" r="2" fill="#39d353" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="560" cy="291" r="2" fill="#00f0ff" opacity="0.4">
+                <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="570" cy="291" r="2" fill="#a855f7" opacity="0.5">
+                <animate attributeName="opacity" values="0.5;0.9;0.5" dur="1.8s" repeatCount="indefinite" />
+            </circle>
+        </g>
+
+    </g>
+
+    <!-- ======================== -->
+    <!-- OUTER HOLOGRAPHIC BORDER -->
+    <!-- ======================== -->
+
+    <rect
+        x="1"
+        y="1"
+        width="598"
+        height="298"
+        rx="20"
+        fill="none"
+        stroke="url(#holoBorder)"
+        stroke-width="1.5"
+    />
+
+    <!-- Corner accent decorations -->
+    <g opacity="0.5">
+        <!-- Top-left -->
+        <line x1="5" y1="20" x2="5" y2="35" stroke="#00f0ff" stroke-width="1.5" />
+        <line x1="5" y1="20" x2="20" y2="20" stroke="#00f0ff" stroke-width="1.5" />
+        <!-- Top-right -->
+        <line x1="595" y1="20" x2="595" y2="35" stroke="#a855f7" stroke-width="1.5" />
+        <line x1="580" y1="20" x2="595" y2="20" stroke="#a855f7" stroke-width="1.5" />
+        <!-- Bottom-left -->
+        <line x1="5" y1="265" x2="5" y2="280" stroke="#a855f7" stroke-width="1.5" />
+        <line x1="5" y1="280" x2="20" y2="280" stroke="#a855f7" stroke-width="1.5" />
+        <!-- Bottom-right -->
+        <line x1="595" y1="265" x2="595" y2="280" stroke="#00f0ff" stroke-width="1.5" />
+        <line x1="580" y1="280" x2="595" y2="280" stroke="#00f0ff" stroke-width="1.5" />
+    </g>
+
+</svg>
