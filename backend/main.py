@@ -209,7 +209,12 @@ def get_user(username: str):
     "following": data["following"]
 }
 @app.get("/api/card/{username}")
-def get_card(username: str):
+def get_card(username: str, theme: str = "github-dark"):
+    # Validate theme name to prevent path traversal
+    allowed_themes = {"github-dark", "github-futuristic"}
+    if theme not in allowed_themes:
+        theme = "github-dark"
+
     url = f"https://api.github.com/users/{username}"
     response = requests.get(url, headers=github_headers(), timeout=10)
     if response.status_code == 404:
@@ -239,7 +244,7 @@ def get_card(username: str):
 
     contribution_stats = get_contribution_stats(username)
     total_stars = get_total_stars(username)
-    svg_path = Path(__file__).parent.parent / "cards" / "github-dark.svg"
+    svg_path = Path(__file__).parent.parent / "cards" / f"{theme}.svg"
     svg = svg_path.read_text(encoding="utf-8")
     svg = svg.replace("{{NAME}}", data.get("name") or data["login"])
     svg = svg.replace("{{USERNAME}}", data["login"])
